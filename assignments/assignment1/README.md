@@ -119,12 +119,51 @@ for (i = 1; i <= max_frequency; i++)
 
 
 
+### Question 4. Random DNA shearing and fragment lengths [20 pts]
 
-### Question 4. Coverage simulator [20 pts]
+Before sequencing, DNA is often broken into smaller fragments. In this question, you will simulate randomly cutting a 1Mbp genome and examine the lengths of the fragments that remain. You do not need to simulate the DNA sequence itself.
 
-- Question 4.1. How many 100bp reads are needed to sequence a 1Mbp genome to 3x coverage?
+- Question 4.1. In the language of your choice, simulate cutting a linear 1Mbp genome into 10,000 segments by picking 9,999 distinct cut points uniformly at random from positions 1 through 999,999. A cut at position x is between bases x and x+1. Sort the cut points, include the two ends of the genome, and compute the length of each remaining fragment. Report the mean fragment length. Plot a histogram of the fragment lengths and overlay an exponential distribution using the mean you just computed (lambda = 1/mean). How well does the exponential distribution fit the data? Here is pseudocode for the simulator:
 
-- Question 4.2. In the language of your choice, simulate sequencing 3x coverage of a 1Mbp genome with 100bp reads and plot the histogram of coverage. Note you do not need to actually output the sequences of the reads, you can just uniform randomly sample positions in the genome and record the coverage. You do not need to consider the strand of each read. The start position of each read should have a uniform random probability at each possible starting position (1 through 999,901). You can record the coverage in an array of 1M positions. Overlay the histogram with a Poisson distribution with lambda=3. Also overlay the distribution with a Normal distribution with a mean of 3 and a standard deviation of 1.73 (which is the square root of 3). Here is the pseudocode for the simulator:
+```
+genomesize = 1000000
+num_segments = 10000
+
+## sample distinct cut positions without replacement
+cut_points = random_sample_without_replacement(1, genomesize-1, num_segments-1)
+boundaries = concatenate([0], sort(cut_points), [genomesize])
+fragment_lengths = initialize_empty_list()
+
+for (i = 0; i < num_segments; i++)
+{
+  length = boundaries[i+1] - boundaries[i]
+  append(fragment_lengths, length)
+}
+
+mean_length = mean(fragment_lengths)
+
+## now plot the histogram and overlay the exponential distribution
+...
+```
+
+  - Note: Normalize your histograms as probability densities (total area = 1) so that you can compare them with the fitted distributions. Label the x-axis with length in bp and the y-axis with probability density.
+
+- Question 4.2. Keep the fragments in their original order along the genome and divide them into non-overlapping groups of 10: fragments 1-10, 11-20, 21-30, etc. Compute the total length of each group, giving 1,000 observations. Plot a histogram of these total lengths and fit a negative binomial distribution using r = 10 and p = 10 divided by the observed mean group length. Overlay the fitted distribution. How well does it fit? How does the shape of this histogram compare with the histogram of individual fragment lengths?
+
+  - Hint: To plot the fitted probability for a total length s, use `scipy.stats.nbinom.pmf(s - 10, n=10, p=p)` in Python or `dnbinom(s - 10, size=10, prob=p)` in R. The subtraction of 10 converts the total length to the number of uncut positions before 10 cuts. For a binned histogram, sum the predicted probabilities over the integer lengths in each bin and divide by the bin width to match the histogram's density scale. Because we fix the number of cuts in a finite genome, the exponential and negative binomial curves are approximations.
+
+- Question 4.3. Repeat Questions 4.1 and 4.2, this time cutting the same 1Mbp genome into 100,000 segments. Report the mean fragment length and the mean total length of a group of 10. Show both histograms with their fitted distributions, using the new means to set the parameters. How do the lengths and the quality of the fits compare with your results for 10,000 segments?
+
+- Question 4.4. How many cuts should you make in a linear 1Mbp genome so that the mean fragment length is as close as possible to 42bp? Remember that the number of fragments is one more than the number of cuts. Report the integer number of cuts and the resulting mean fragment length.
+
+- Question 4.5. Run the simulator from Question 4.1 using the number of cuts you calculated in Question 4.4. Report the mean fragment length and show both histograms: individual fragment lengths with a fitted exponential distribution, and total lengths of non-overlapping groups of 10 with a fitted negative binomial distribution. If fewer than 10 fragments remain at the end, omit those fragments from the grouped histogram only. How well do the fitted distributions describe your results?
+
+
+### Question 5. Coverage simulator [20 pts]
+
+- Question 5.1. How many 100bp reads are needed to sequence a 1Mbp genome to 3x coverage?
+
+- Question 5.2. In the language of your choice, simulate sequencing 3x coverage of a 1Mbp genome with 100bp reads and plot the histogram of coverage. Note you do not need to actually output the sequences of the reads, you can just uniform randomly sample positions in the genome and record the coverage. You do not need to consider the strand of each read. The start position of each read should have a uniform random probability at each possible starting position (1 through 999,901). You can record the coverage in an array of 1M positions. Overlay the histogram with a Poisson distribution with lambda=3. Also overlay the distribution with a Normal distribution with a mean of 3 and a standard deviation of 1.73 (which is the square root of 3). Here is the pseudocode for the simulator:
 
 ```
 num_reads = calculate_number_of_reads(genomesize, readlength, coverage)
@@ -158,11 +197,11 @@ for (x = 0; x < genomesize; x++)
 
 ```
 
-- Question 4.3. Using the histogram from Q4.2, how much of the genome has not been sequenced (has 0x coverage)? How well does this match Poisson expectations? How well does the normal distribution fit the data?
+- Question 5.3. Using the histogram from Q5.2, how much of the genome has not been sequenced (has 0x coverage)? How well does this match Poisson expectations? How well does the normal distribution fit the data?
 
-- Question 4.4. Now repeat the analysis with 10x coverage: 1. simulate the appropriate number of reads, 2. make a histogram, 3. overlay a Poisson distribution with lambda=10, 4. overlay with a Normal distribution with mean=10, standard deviation=3.16 (sqrt(10)). 5. compute the number of bases with 0x coverage, and 6. evaluate how well it matches the Poisson expectation and Normal expectations.
+- Question 5.4. Now repeat the analysis with 10x coverage: 1. simulate the appropriate number of reads, 2. make a histogram, 3. overlay a Poisson distribution with lambda=10, 4. overlay with a Normal distribution with mean=10, standard deviation=3.16 (sqrt(10)). 5. compute the number of bases with 0x coverage, and 6. evaluate how well it matches the Poisson expectation and Normal expectations.
 
-- Question 4.5. Now repeat the analysis with 30x coverage: 1. simulate the appropriate number of reads, 2. make a histogram, 3. overlay a Poisson distribution with lambda=30, 4. overlay with a Normal distribution with mean=30, standard deviation=5.47 (sqrt(30)). 5. compute the number of bases with 0x coverage, and 6. evaluate how well it matches the Poisson expectation and Normal expectations.
+- Question 5.5. Now repeat the analysis with 30x coverage: 1. simulate the appropriate number of reads, 2. make a histogram, 3. overlay a Poisson distribution with lambda=30, 4. overlay with a Normal distribution with mean=30, standard deviation=5.47 (sqrt(30)). 5. compute the number of bases with 0x coverage, and 6. evaluate how well it matches the Poisson expectation and Normal expectations.
 
 
 

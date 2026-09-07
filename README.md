@@ -3,7 +3,7 @@ Prof: [Michael Schatz](http://schatz-lab.org) (mschatz @ cs.jhu.edu) <br>
 TA: [Nicole Brown](https://www.linkedin.com/in/nicolebrown14/) (nbrown62 @ jh.edu) <br>
 Class Hours: Monday + Wednesday @ 3:00p - 4:15p [Krieger 180](hnshopkins.edu/classroom/krieger-180/) <br>
 Schatz Office Hours: TBD By appointment <br>
-Brown Office Hours: TBD and by appointment <br>
+Brown Office Hours: Wednesdays @ 4:30p in Malone 216 and [Zoom](https://JHUBlueJays.zoom.us/j/9100118410) and by appointment <br>
 
 **The primary goal of the course is for students to be grounded in the fundamental theory and applications to leave the course empowered to conduct independent genomic analyses.** 
 We will study the leading computational and quantitative approaches for comparing and analyzing genomes starting from raw sequencing data. The course will focus on human genomics and human medical applications, but the techniques will be broadly applicable across the tree of life. The topics will include genome assembly & comparative genomics, variant identification & analysis, gene expression & regulation, personal genome analysis, and cancer genomics. A major focus will be on deep learning and machine learning to tackle these problems. The grading will be based on assignments, two exams, class presentations, and a significant class project. There are no formal course prerequisites, although the course will require familiarity with UNIX scripting and/or programming to complete the assignments and course project. 

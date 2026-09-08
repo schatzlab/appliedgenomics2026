@@ -7,7 +7,7 @@ Due Date: Wednesday, Sept. 16, 2026 @ 11:59pm <br>
 In this assignment you will profile the overall structure of the genomes of several important species and then study human chromosome 22 in more detail.
 As a reminder, any questions about the assignment should be posted to [Piazza](https://piazza.com/jhu/fall2026/600449600649).
 
-### Question 1: Why Genomics? [10 pts]
+### Question 1: Why Genomics? [5 pts]
 
 - Question 1.1. Use ChatGPT (or your favorite LLM) to write an essay on why you are interested in genomics. Include specific details from your own interests. Make sure to ask for references. Make sure to include both your prompt(s) and the output from the LLM
 
@@ -41,14 +41,14 @@ Using these files, make a table with the following information per species (Reca
 
 - Question 2.5. Mean chromosome length
 
-- Question 2.6 N50 chromosome length
+- Question 2.6. N50 chromosome length
 
 
 ### Question 3. Random DNA shearing and fragment lengths [20 pts]
 
 Before sequencing, DNA is often broken into smaller fragments. In this question, you will simulate randomly cutting a 1Mbp genome and examine the lengths of the fragments that remain. You do not need to simulate the DNA sequence itself.
 
-- Question 3.1. In the language of your choice, simulate cutting a linear 1Mbp genome into 10,000 segments by picking 9,999 distinct cut points uniformly at random from positions 1 through 999,999. A cut at position x is between bases x and x+1. Sort the cut points, include the two ends of the genome, and compute the length of each remaining fragment. Report the mean fragment length. Plot a histogram of the fragment lengths and overlay an exponential distribution using the mean you just computed (lambda = 1/mean). How well does the exponential distribution fit the data? Here is pseudocode for the simulator:
+- Question 3.1. In the language of your choice, simulate cutting a linear 1Mbp genome into 10,000 segments by picking 9,999 distinct cut points uniformly at random from positions 1 through 999,999. A cut at position x is between bases x and x+1. Sort the cut points, include the two ends of the genome, and compute the length of each remaining fragment. Report the mean fragment length. Plot a histogram of the fragment lengths and overlay an exponential distribution using the mean you just computed (lambda = 1/mean). How well does the exponential distribution fit the data (just a visual comparison is enough)? Here is pseudocode for the simulator:
 
 ```
 genomesize = 1000000
@@ -73,7 +73,7 @@ mean_length = mean(fragment_lengths)
 
   - Note: Normalize your histograms as probability densities (total area = 1) so that you can compare them with the fitted distributions. Label the x-axis with length in bp and the y-axis with probability density.
 
-- Question 3.2. Keep the fragments in their original order along the genome and divide them into non-overlapping groups of 10: fragments 1-10, 11-20, 21-30, etc. Compute the total length of each group, giving 1,000 observations. Plot a histogram of these total lengths and fit a negative binomial distribution using r = 10 and p = 10 divided by the observed mean group length. Overlay the fitted distribution. How well does it fit? How does the shape of this histogram compare with the histogram of individual fragment lengths?
+- Question 3.2. Keep the fragments in their original order along the genome and divide them into non-overlapping groups of 10: fragments 1-10, 11-20, 21-30, etc. Compute the total length of each group, giving 1,000 observations. Plot a histogram of these total lengths and fit a negative binomial distribution using r = 10 and p = 10 divided by the observed mean group length. Overlay the fitted distribution. How well does it fit (just a visual comparison is enough)? How does the shape of this histogram compare with the histogram of individual fragment lengths?
 
   - Hint: To plot the fitted probability for a total length s, use `scipy.stats.nbinom.pmf(s - 10, n=10, p=p)` in Python or `dnbinom(s - 10, size=10, prob=p)` in R. The subtraction of 10 converts the total length to the number of uncut positions before 10 cuts. For a binned histogram, sum the predicted probabilities over the integer lengths in each bin and divide by the bin width to match the histogram's density scale. Because we fix the number of cuts in a finite genome, the exponential and negative binomial curves are approximations.
 
@@ -131,13 +131,9 @@ for (x = 0; x < genomesize; x++)
 
 
 
-
-
-
-
 ### Question 5: Kmer Uniqueness [20 pts]
 
-Download the human chomosome 22 from here: [https://schatz-lab.org/appliedgenomics2026/assignments/assignment1/chr22.fa.gz](https://schatz-lab.org/appliedgenomics2026/assignments/assignment1/chr22.fa.gz)
+Download the human chromosome 22 from here: [https://schatz-lab.org/appliedgenomics2026/assignments/assignment1/chr22.fa.gz](https://schatz-lab.org/appliedgenomics2026/assignments/assignment1/chr22.fa.gz)
 
 #### Notes:
 
@@ -145,15 +141,17 @@ Download the human chomosome 22 from here: [https://schatz-lab.org/appliedgenomi
 
 - A string of length G has G - k + 1 kmers. For long strings, G - k + 1 is nearly the same as G e.g. for human using 19mers, 3,000,000,000 vs 2,999,999,986
 
-- While a string of length G has G-k+1 kmers, there may be many fewer *distinct* kmers. For example, in the string "GCATCATCATCATCATCATCAT..." the kmers are: GCA, CAT, ATC, TCA, CAT, ATC, TCA, CAT, ATC, TCA, CAT, ... As such there are only 4 disinct kmers (GCA, CAT, ATC, TCA). Of these GCA occurs once and the others occur many times.
+- While a string of length G has G-k+1 kmers, there may be many fewer *distinct* kmers. For example, in the string "GCATCATCATCATCATCATCAT..." the kmers are: GCA, CAT, ATC, TCA, CAT, ATC, TCA, CAT, ATC, TCA, CAT, ... As such there are only 4 distinct kmers (GCA, CAT, ATC, TCA). Of these GCA occurs once and the others occur many times.
 
 - If your computer runs out of RAM, you can use a portion of chromosome22 (e.g the first 20Mbp or smaller region). Just make to to mark which portion of the chromosome you are using. Also make sure that this region is not just N characters.
 
 #### Questions:
 
-- Question 5.1. How many As, Cs, Gs, Ts and Ns are found in the entire chromosome? If needed convert lowercase letters to uppercase, and any other character can be converted to N.
+- Question 5.1. How many As, Cs, Gs, Ts are found in the entire chromosome? What other characters are found and how often are they found?
 
-- Question 5.2. In the language of your choice, tally the frequency of 19-mers in the chromosome, and output the kmer frequency spectrum upto 1000 e.g. how many kmers occur 1 time, how many occur 2 times, how many occur 3 times, etc. For this, convert lowercase letters to uppercase, and any character that is not ACG or T can be converted to A (especially N characters). We recommend you use a dictionary (or hash table) to tally the frequencies using this pseudocode. In your writeup, show the kmer frequency spectrum for 1 to 20, e.g. how many kmers occur 1 time, how many occur 2, ..., how many occur 20 times.
+- Question 5.2  Write a script to clean a fasta file by ensuring all characters are in uppercase ("a" becomes "A") and replacing any non-ACGT characters with "A" (especially N characters). Run this script on chr22 and report how many As, Cs, Gs, and Ts are now found
+
+- Question 5.3. In the language of your choice, tally the frequency of 19-mers in the cleaned chromosome file, and output the kmer frequency spectrum to a file e.g. how many kmers occur 1 time, how many occur 2 times, how many occur 3 times, etc. We recommend you use a dictionary (or hash table) to tally the frequencies using this pseudocode. In your writeup, show the kmer frequency spectrum for 1 to 20, e.g. how many kmers occur 1 time, how many occur 2, ..., how many occur 20 times. Note you should record all values in the file (up to max_frequency), but in your write up only display the first 20 (e.g. with the unix `head` command)
 
 ```
 ## initialize kmer length
@@ -202,9 +200,9 @@ for (i = 1; i <= max_frequency; i++)
 }
 ```
 
-- Question 5.3. Using the output from 5.2, plot the kmer frequency spectrum: x-axis is the kmer frequency, and the y-axis is the number of kmers that occur x times. Make sure to plot both the x and y-axis in log space.
+- Question 5.4. Using the output from 5.3, plot the kmer frequency spectrum: x-axis is the kmer frequency, and the y-axis is the number of kmers that occur x times. Make sure to plot both the x and y-axis in log space. This should include all kmers (up to max_frequency)
 
-- Question 5.4. a) What percent of the genome is unique, e.g. what percent of the kmers occur 1 time. b) What percent of the genome is repetitive (occurs more than 1 time). c) What percent occurs more than 1000 times?
+- Question 5.5. a) What percent of the genome is unique, e.g. what percent of the kmers occur 1 time. b) What percent of the genome is repetitive (occurs more than 1 time). c) What percent occurs 1000 or more times?
 
   - Note: For this analysis, you should separately consider all of the kmers in the genome, e.g. the denominator will be G-k+1. When computing the unique percentage, use the number of unique kmers as the numerator. When computing repetitive percentages, make sure to separately count each instance of a repetitive kmer. For example the string "GCATCATCAT" has kmers: GCA, CAT, ATC, TCA, CAT, ATC, TCA, CAT. Of these 1/8 (12.5%) are unique and 7/8 (87.5%) are repetitive
 

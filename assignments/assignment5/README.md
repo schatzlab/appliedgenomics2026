@@ -32,7 +32,7 @@ You will need to add the following cells to the top of the notebook in Google Co
 
 Because of the way Google Colab works, you will need to install these every time you reopen the notebook. 
 
-As a reminder, any questions about the assignment should be posted to [Piazza](https://piazza.com/class/meogfdbmu7x7hf#).
+As a reminder, any questions about the assignment should be posted to [Piazza](https://piazza.com/).
 
 See the notebook here: [Assignment5.ipynb](Assignment5.ipynb)
 

@@ -11,7 +11,7 @@ Presentations will be a total of 10 minutes: 8 minutes for the presentation, fol
 | 3    | 12/2 | 3:20  | Noisy Nucleotides   | Johnny Su, Oliver Nizet, Leon Zhao | Protein-conditioned diffusion model for the CM4AI DREAM Challenge                                      |
 | 4    | 12/2 | 3:30  | Team Leo            | Leo Qi                             | Do pretrained cell embeddings improve cross-study skin cell annotation?                                |
 | 5    | 12/2 | 3:40  | Team H3N2           | Zheyang Chen, Chengweiran Liu      | Sequence-Guided Selection of Representative H3N2 Influenza Strains for Neutralization Titer Prediction |
-| 6    | 12/2 | 3:50  | The Fusion Factors  | Jan Matthias, Shubhangi Kumar      | Comparing Multimodal Data Fusion Methods for Protein Abundance Prediction                              |
+| 6    | 12/2 | 3:50  | Zero-Shot Glia      | Mayling Chen, John-Paul Akinbami   | Investigating single-cell foundation models on glioblastoma                                            |
 |      |      |       |                     |                                    |                                                                                                        |
 | 1    | 12/7 | 3:00  | Panel Sensitivity   | Yi Hung Lim                        | How Reference Panels Shape Population Structure                                                        |
 | 2    | 12/7 | 3:10  | Mockingbird         | Jennie Russell                     | Does ensemble molecular mimicry vary between individuals?                                              |
@@ -25,7 +25,7 @@ Presentations will be a total of 10 minutes: 8 minutes for the presentation, fol
 | 3    | 12/9 | 3:20  | SMalL Cells         | Sylvia Yam, Moses Yu, Lia Lucas    | Do single-cell foundation models transfer across studies?                                              |
 | 4    | 12/9 | 3:30  | The Biocompute Team | Gabrielle DeCuir, Vrinda Sehgal    | Mining the Human Genome for Gene-Regulatory Parts to Control Neural Biocomputing Substrates            |
 | 5    | 12/9 | 3:40  | miRNA Finders       | Katrina Wang, Megan Weng           | Effects of Genetic Variation on the Prediction of Human miRNA Target Sites                             |
-| 6    | 12/9 | 3:50  | Zero-Shot Glia      | Mayling Chen, John-Paul Akinbami   | Investigating single-cell foundation models on glioblastoma                                            |
+| 6    | 12/9 | 3:50  | The Fusion Factors  | Jan Matthias, Shubhangi Kumar      | Comparing Multimodal Data Fusion Methods for Protein Abundance Prediction                              |
 
 
 ## Recommended outline for your talk (30 seconds to 1 minute per slide):

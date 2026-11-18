@@ -8,7 +8,7 @@ Presentations will be a total of 10 minutes: 8 minutes for the presentation, fol
 | ---- | ---- | ----- | ------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------ |
 | 1    | 12/2 | 3:00  | Cancer cell state   | Aswanth Mahalingam                 | Copy-number dosage and transcriptional cell states in non-small-cell lung cancer                       |
 | 2    | 12/2 | 3:10  | STumped grad        | Justin Yu                          | Immune niches and spread at the glioblastoma infiltration zone                                         |
-| 3    | 12/2 | 3:20  | Noisy Nucleotides   | Johnny Su, Oliver Nizet, Leon Zhao | Protein-conditioned diffusion model for the CM4AI DREAM Challenge                                      |
+| 3    | 12/2 | 3:20  | Metagenomics Reference Analysis | Juan Hidrowoh    | The Effects of Reference Database Completeness and Evolutionary Relatedness on Metagenomic Classification Accuracy                                      |
 | 4    | 12/2 | 3:30  | Team Leo            | Leo Qi                             | Do pretrained cell embeddings improve cross-study skin cell annotation?                                |
 | 5    | 12/2 | 3:40  | Team H3N2           | Zheyang Chen, Chengweiran Liu      | Sequence-Guided Selection of Representative H3N2 Influenza Strains for Neutralization Titer Prediction |
 | 6    | 12/2 | 3:50  | Zero-Shot Glia      | Mayling Chen, John-Paul Akinbami   | Investigating single-cell foundation models on glioblastoma                                            |
@@ -19,6 +19,7 @@ Presentations will be a total of 10 minutes: 8 minutes for the presentation, fol
 | 4    | 12/7 | 3:30  | Probe-ably Fine     | Lillian Lam                        | Characterizing Non-Specific Binding Artifacts Across Spatial Transcriptomics Platforms                 |
 | 5    | 12/7 | 3:40  | The Happy Hamstring | Colin Harte                        | More Depth or Higher Purity? Identifying the Limiting Factor in Somatic Rearrangement Detection        |
 | 6    | 12/7 | 3:50  | Team hEDSpace       | Ashrith Kollu, Hunter King         | Identifying the Genetic Basis of Hypermobile Ehlers-Danlos Syndrome                                    |
+| 7    | 12/7 | 4:00  | Noisy Nucleotides   | Johnny Su, Oliver Nizet, Leon Zhao | Protein-conditioned diffusion model for the CM4AI DREAM Challenge                                      |
 |      |      |       |                     |                                    |                                                                                                        |
 | 1    | 12/9 | 3:00  | aa_CellFormer       | Qiuhong Wu, Yuchen Guo             | Evaluating Single-Cell Foundation Models for Cross-Study Cell-Type Annotation                          |
 | 2    | 12/9 | 3:10  | Team Axolotl        | Danielle Yang                      | Identifying Robust Gene-Expression Signatures of Impaired Axolotl Limb Regeneration                    |
